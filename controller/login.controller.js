@@ -3,6 +3,17 @@ const { JWT_SECRET_KEY } = process.env
 import { createUser,getAllRecords } from '../service/db_operations'
 import { validateRegesterReq } from '../validation/user.validation'
 
+const Redis = require('ioredis');
+// const redis = new Redis({
+//     host: 'test-001.r5davu.0001.aps1.cache.amazonaws.com',
+//     port: "6379"    
+// })
+// redis.on('connect', error=>{
+//     if (error) {
+//         console.log('rediserror', error); 
+//     }
+//     console.log("REDIS CONNECTED", redis.status);
+// })
 class loginRegisterClass {
     async register(req, res) {
         const { body } = req
@@ -46,6 +57,9 @@ class loginRegisterClass {
         } catch (error) {
             return res.json({ message: "Failed", "error": error })
         }
+    }
+    async cacheTest(req, res) {
+
     }
 }
 
