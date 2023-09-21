@@ -49,15 +49,24 @@ class loginRegisterClass {
         }
 
     }
-    async getAllUsers(req,res){
-        try {
-            const data = await getAllRecords()
+    // async getAllUsers(req,res){
+    //     try {
+    //         const data = await getAllRecords()
+    //         console.log("data", data);
+    //         return res.json({ message: "Success", "users": data })
+    //     } catch (error) {
+    //         return res.json({ message: "Failed", "error": error })
+    //     }
+    // }
+    async getAllUsers(req, res) {            
+        getAllRecords().then(data=>{
             console.log("data", data);
             return res.json({ message: "Success", "users": data })
-        } catch (error) {
-            return res.json({ message: "Failed", "error": error })
-        }
-    }
+        }).catch(err =>{
+            console.log("err", err);
+            return res.json({ message: "Failed", "error": err })
+        })      
+}
     async cacheTest(req, res) {
 
     }
